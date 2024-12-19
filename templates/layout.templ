@@ -1,0 +1,29 @@
+package templates
+
+templ Head(title string, headers map[string]string, stylesheets []string, scripts []string) {
+	<head>
+		<title>{ title }</title>
+		for k, v := range headers {
+			<meta name={ k } content={ v }/>
+		}
+		for _, href := range stylesheets {
+			<link
+				rel="stylesheet"
+				type="text/css"
+				href={ href }
+			/>
+		}
+		for _, src := range scripts {
+			<script src={ src }></script>
+		}
+	</head>
+}
+
+templ Layout(body templ.Component, head templ.Component) {
+	<html>
+		@head
+		<body>
+			@body
+		</body>
+	</html>
+}

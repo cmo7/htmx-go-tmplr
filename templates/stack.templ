@@ -1,0 +1,9 @@
+package templates
+
+templ Stack(contents []templ.Component) {
+	<div>
+		for _, c := range contents {
+			@c
+		}
+	</div>
+}
